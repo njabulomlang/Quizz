@@ -1,0 +1,27 @@
+page-home {
+ion-content{
+  background-image: url("../../assets/imgs/quiz.jpeg");
+  background-size: cover;
+
+.flex{
+  padding: 20%;
+
+  display: flex;
+  -webkit-flex-flow: column wrap;
+  justify-content: space-around;
+
+}
+.flex>div{
+  margin: auto;
+  background: rgb(71, 68, 68);
+  padding: 5px;
+  width: 180px;
+  height: 50px;
+  margin-top: 30px;
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+}
+}
