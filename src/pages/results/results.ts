@@ -34,13 +34,7 @@ export class ResultsPage {
       });
 
   }
-  goHome(){
-    this.navCtrl.push(HomePage);
-  }
 
-  Retry(){
-    this.navCtrl.push(PoliticsPage);
-  }
 
 
 }
