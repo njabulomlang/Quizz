@@ -1,9 +1,10 @@
 import { Storage } from '@ionic/storage';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component,  ViewChild} from '@angular/core';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { question } from '../model/question';
 import { option } from '../model/option';
 import { ResultsPage } from '../results/results';
+import { FormGroup, FormControl } from '@angular/forms'
 
 
 /**
@@ -19,7 +20,7 @@ import { ResultsPage } from '../results/results';
   templateUrl: 'automotive.html',
 })
 export class AutomotivePage {
-
+  @ViewChild(Content) content: Content;
   obj : Array<question> = [];
   sum : any;
   opt1 : Array<option>  = [
@@ -36,6 +37,9 @@ export class AutomotivePage {
   Q4 = ['False'];
   Q5 = ['True'];
 
+
+  options;
+  optionsForm;
   val: number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams,public storage: Storage) {
     this.obj = [
@@ -44,13 +48,15 @@ export class AutomotivePage {
     {id : 3, quest:"Henry Ford founded mustang?", options : "this.opt1[0]", point: 20, answ: 'True'},
     {id : 4, quest:"South African maximum speed is 150km/p?", options : "this.opt1[0]", point: 20, answ: 'False'},
     {id : 5, quest:"First black man to build car is Charles Richard Patterson?", options : "this.opt1[0]", point: 20, answ: 'True'}];
-  }
+
+    this.optionsForm = new FormGroup({
+      "options": new FormControl()});
+    }
+
 
   ionViewDidLoad() {
-  console.log(this.opt1[0]);
-
-
-
+    this.content.resize();
+    this.optionsForm.controls.options.reset()
   }
 
 
@@ -61,9 +67,7 @@ export class AutomotivePage {
         this.Q1.map(res =>{
           if (value == res){
             this.getSum(20);
-
-
-          }
+          }else this.getSum(0);
 
         })
         break;
@@ -71,9 +75,7 @@ export class AutomotivePage {
         this.Q2.map(res =>{
           if (value == res){
             this.getSum(20);
-
-
-          }
+          }else this.getSum(0);
         })
         break;
         case 3:
@@ -82,7 +84,7 @@ export class AutomotivePage {
               this.getSum(20);
 
 
-            }
+            }else this.getSum(0);
 
           })
           break;
@@ -92,7 +94,7 @@ export class AutomotivePage {
                 this.getSum(20);
 
 
-              }
+              }else this.getSum(0);
 
             })
             break;
@@ -102,7 +104,7 @@ export class AutomotivePage {
                   this.getSum(20);
 
 
-                }
+                }else this.getSum(0);
 
               })
               break;
@@ -119,12 +121,8 @@ export class AutomotivePage {
 
   }
 
-  ionViewDidLeave(){
 
-  }
 getRes(){
   this.navCtrl.push(ResultsPage, this.val);
-
-
 }
 }

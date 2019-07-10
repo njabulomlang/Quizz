@@ -15,6 +15,9 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
 
   }
+  ionViewDidLoad(){
+   this.navCtrl.remove;
+  }
   politics(){
    this.navCtrl.push(PoliticsPage);
   }

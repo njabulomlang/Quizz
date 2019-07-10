@@ -1,9 +1,10 @@
-import { PoliticsPage } from './../politics/politics';
+
 import { Storage } from '@ionic/storage';
 
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { HomePage } from '../home/home';
+
 
 
 /**
@@ -20,7 +21,7 @@ import { HomePage } from '../home/home';
 })
 export class ResultsPage {
   totalRes: any = 0;
-
+  @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage) {
 
@@ -35,6 +36,17 @@ export class ResultsPage {
 
   }
 
+retry(){
+  this.navCtrl.pop();
+}
+quit()
+{
+  this.navCtrl.push(HomePage);
+}
+ionViewDidLeave(){
+  this.content.resize();
+ this.storage.set('myData', this.totalRes=0);
+}
 
 
 }

@@ -1,3 +1,19 @@
 page-results {
+  ion-content{
 
+}
+.main{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+ background-color: wheat;
+  height: 30vh;
+  margin-top: 30%;
+}
+
+
+.main> h1, .button{
+margin: 3%;
+padding: 3%;
+}
 }
